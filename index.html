@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Google docs</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            background-color:#f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            margin: 50px auto;
+            width: 500px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0px 0px 20px 5px rgba(0,0,0,0.2);
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 25px;
+            color: #333;
+        }
+
+        label {
+            display: block;
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            display: block;
+            width: 100%;
+            padding: 5px 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: none;
+            margin-bottom: 20px;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            border: none;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #3e8e41;
+        }
+
+        .form-divider {
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .form-divider hr {
+            border: none;
+            border-top: 1px solid #ccc;
+            width: 30%;
+            margin: 0 auto;
+        }
+
+        .form-divider span {
+            font-size: 16px;
+            font-weight: bold;
+            color: #666;
+        }
+
+        #login-form,
+        #signup-form,
+        #website-container {
+            display: none;
+        }
+
+        #header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+        }
+
+        #user-name {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        #logout-btn {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            border: none;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        #logout-btn:hover {
+            background-color: #3e8e41;
+        }
+
+        #signup-btn {
+            position: fixed;
+            bottom: 10px;
+            left: 10px;
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            border: none;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        #signup-btn:hover {
+            background-color: #3e8e41;
+        }
+        
+        #website-container {
+            position: relative;
+            height: 600px;
+            margin-top: 30px;
+        }
+
+        #website-container img {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto;
+            display: block;
+        }
+
+        #website-container h1 {
+            font-size: 2em;
+            margin-bottom: 30px;
+        }
+
+        #custom-btn1,
+        #custom-btn2 {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            border: none;
+            font-weight: bold;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+
+        #custom-btn1:hover,
+        #custom-btn2:hover {
+            background-color: #3e8e41;
+        }
+
+        #website-form {
+            margin-top: 30px;
+        }
+
+        #website {
+            padding: 10px;
+            border-radius: 10px;
+            border: none;
+            width: 70%;
+            margin-bottom: 10px;
+        }
+
+        #website-form button[type="submit"],
+        #fullscreen-btn {
+            padding: 10px;
+            border-radius: 10px;
+            border: none;
+            background-color: #373737;
+            color: #fff;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+
+        #website-form button[type="submit"]:hover,
+        #fullscreen-btn:hover {
+            background-color: #555555;
+        }
+
+        #fullscreen-btn {
+            margin-right: auto;
+        }
+
+        #log-out-btn {
+            margin-left: 10px;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="main">
+        <div id="header">
+            <img src="https://www.gstatic.com/docs/documents/images/kix-favicon5.ico" alt="Google Docs Logo">
+            <div id="user-info">
+                <span id="user-name"></span>
+                <button id="logout-btn" onclick="logout()">Logout</button>
+            </div>
+        </div>
+
+        <div class="container" id="login-form">
+            <h2>Login Form</h2> 
+            <form method="post" onsubmit="login(); return false;">
+                <label for="username">Username:</label>
+                <input type="text" id="login-username" name="username" required><br><br>
+                <label for="password">Password:</label>
+                <input type="password" id="login-password" name="password" required><br><br>
+                <input type="submit" value="Login">
+            </form>
+            <span>Don't have an account yet? <a href="#" onclick="displaySignup()">Sign up!</a></span>
+        </div>
+
+        <div class="container" id="signup-form">
+            <h2>Signup Form</h2>
+            <form method="post" onsubmit="signup(); return false;">
+                <label for="name">Name:</label>
+                <input type="text" id="signup-name" name="name" required><br><br>
+                <label for="username">Username:</label>
+                <input type="text" id="signup-username" name="username" required><br><br>
+                <label for="password">Password:</label>
+                <input type="password" id="signup-password" name="password" required><br><br>
+                <input type="submit" value="Signup">
+            </form>
+            <span>Already have an account? <a href="#" onclick="displayLogin()">Login!</a></span>
+        </div>
+
+        <div id="website-container">
+            <img src="https://www.gstatic.com/docs/documents/images/kix-favicon5.ico" alt="Google Docs Logo">
+            <h1>Website Embedder</h1>
+
+            <!-- Add custom button and style it -->
+            <button id="custom-btn1">Rip Bandits</button>
+            <button id="custom-btn2">Bing.com</button>
+
+            <form id="website-form">
+                <label for="website">Enter Website URL:</label><br>
+                <input type="text" id="website" name="website"><br>
+                <button type="submit">Embed Website</button>
+                <button id="fullscreen-btn">Full Screen</button>
+                <button id="log-out-btn">Log Out</button>
+            </form>
+        </div>
+
+        <button id="signup-btn" onclick="displaySignup()">Sign up</button>
+    </div>
+    <script src="script.js"></script>
+    <script>
+        function displayLogin() {
+            document.getElementById("login-form").style.display = "block";
+            document.getElementById("signup-form").style.display = "none";
+        }
+
+        function displaySignup() {
+            document.getElementById("signup-form").style.display = "block";
+            document.getElementById("login-form").style.display = "none";
+        }
+    </script>
+</body>
+</html>
